@@ -43,7 +43,7 @@ function process(event) {
 
  if (phoneInput.isValidNumber()) {
     info.style.display = "";
-    info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+    info.innerHTML = "";
 
     console.log("Sending data");
 
