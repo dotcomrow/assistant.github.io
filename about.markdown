@@ -5,13 +5,13 @@ permalink: /signup/
 ---
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
- <link
+<link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
-    />
-<!-- 
-<form action="" method="POST" onsubmit="process(event)"> -->
+/>
 
+<link rel="stylesheet" href="styles/loading-spinner.css/>
+<div class="wrapper">
 <form id="verify" onsubmit="process(event)">
     <p>Enter your phone number:</p>
     <input id="phone" type="tel" name="phone" />
@@ -22,7 +22,12 @@ permalink: /signup/
     <div class="alert alert-error" style="display: none"></div>
     </label>
 </form>
-
+</div>
+<div class="overlay"></div>
+<div class="spanner">
+  <div class="loader"></div>
+  <p>Uploading music file, please be patient.</p>
+</div>
 <script>
     const phoneInputField = document.querySelector("#phone");
     const phoneInput = window.intlTelInput(phoneInputField, {
@@ -35,7 +40,8 @@ permalink: /signup/
 
 function process(event) {
  event.preventDefault();
-
+ document.querySelector("div.spanner").classList.add("show");
+ document.querySelector("div.overlay").classList.add("show");
  const phoneNumber = phoneInput.getNumber();
 
  info.style.display = "none";
