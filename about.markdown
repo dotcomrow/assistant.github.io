@@ -9,20 +9,11 @@ permalink: /signup/
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
     />
+<!-- 
+<form action="https://plib7qyexhoeljo2j6oye4e6oa0eyldb.lambda-url.us-east-1.on.aws/" method="POST" onsubmit="process(event)"> -->
 
-<form action="https://plib7qyexhoeljo2j6oye4e6oa0eyldb.lambda-url.us-east-1.on.aws/" method="POST" onsubmit="process(event)">
 
-<label>
-First Name : <input type="text" name="firstName" id="firstName"/>
-</label>
-
-<label>
-Last Name : <input type="text" name="lastName" id="lastName"/>
-</label>
-<input type="submit"/>
-</form>
-
-<form id="login" onsubmit="process(event)">
+<form id="verify" onsubmit="process(event)">
     <p>Enter your phone number:</p>
     <input id="phone" type="tel" name="phone" />
     <input type="submit" class="btn" value="Verify" />
@@ -43,12 +34,44 @@ Last Name : <input type="text" name="lastName" id="lastName"/>
     const info = document.querySelector(".alert-info");
     const error = document.querySelector(".alert-error");
 
-    function process(event) {
-      event.preventDefault();
+function process(event) {
+ event.preventDefault();
 
-      const phoneNumber = phoneInput.getNumber();
+ const phoneNumber = phoneInput.getNumber();
 
-      info.style.display = "";
-      info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+ info.style.display = "none";
+ error.style.display = "none";
+
+ const data = new URLSearchParams();
+ data.append("phone", phoneNumber);
+
+const client = context.getTwilioClient();
+const lookup = await client.lookups.v2.phoneNumbers(event.phone).fetch();
+
+ if (lookup.valid) {
+      response.setStatusCode(200);
+      response.setBody({
+        success: true,
+      });
+      callback(null, response);
+    } else {
+      response.setStatusCode(400);
+      response.setBody({
+        success: false,
+        error: `Invalid phone number ${event.phone}: ${errorStr(
+          lookup.validationErrors
+        )}`,
+      });
+      callback(null, response);
     }
-  </script>
+  } catch (error) {
+    console.error(error);
+    response.setStatusCode(error.status);
+    response.setBody({
+      success: false,
+      error: "Something went wrong.",
+    });
+    callback(null, response);
+  }
+};
+</script>
