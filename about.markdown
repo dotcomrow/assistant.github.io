@@ -136,8 +136,6 @@ permalink: /signup/
 
 function process(event) {
  event.preventDefault();
- document.querySelector("div.spanner").classList.add("show");
- document.querySelector("div.overlay").classList.add("show");
  const phoneNumber = phoneInput.getNumber();
 
  info.style.display = "none";
@@ -146,7 +144,8 @@ function process(event) {
  if (phoneInput.isValidNumber()) {
     info.style.display = "";
     info.innerHTML = "";
-
+    document.querySelector("div.spanner").classList.add("show");
+    document.querySelector("div.overlay").classList.add("show");
     console.log("Sending data");
 
     data = {
