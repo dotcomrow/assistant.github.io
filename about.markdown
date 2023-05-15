@@ -78,7 +78,7 @@ function process(event) {
 
     // Add the required HTTP header for form data POST requests
     XHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
+    XHR.setRequestHeader("Access-Control-Allow-Origin", "*");
     // Finally, send our data.
     XHR.send(urlEncodedData);
 } else {
