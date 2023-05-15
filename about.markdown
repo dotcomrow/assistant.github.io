@@ -47,13 +47,15 @@ function process(event) {
     info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
 
     console.log("Sending data");
-
+    data = {
+        "phoneNumber":phoneNumber
+    }
     const XHR = new XMLHttpRequest();
 
     const urlEncodedDataPairs = [];
 
     // Turn the data object into an array of URL-encoded key/value pairs.
-    for (const [name, value] of Object.entries(phoneInput)) {
+    for (const [name, value] of Object.entries(data)) {
         urlEncodedDataPairs.push(
             `${encodeURIComponent(name)}=${encodeURIComponent(value)}`
         );
