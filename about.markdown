@@ -38,12 +38,13 @@ First Name : <input type="text" name="firstName" id="firstName"/>
 <label>
 Last Name : <input type="text" name="lastName" id="lastName"/>
 </label>
-
-<label>
-      <div class="alert alert-info" style="display: none"></div>
-      <div class="alert alert-error" style="display: none"></div>
-Phone Number : <input type="text" name="phoneNumber" id="phoneNumber"/>
-</label>
-
 <input type="submit"/>
 </form>
+      <form id="login" onsubmit="process(event)">
+        <p>Enter your phone number:</p>
+        <input id="phone" type="tel" name="phone" />
+        <input type="submit" class="btn" value="Verify" />
+      </form><label>
+      <div class="alert alert-info" style="display: none"></div>
+      <div class="alert alert-error" style="display: none"></div>
+</label>
