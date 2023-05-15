@@ -5,8 +5,4 @@
 layout: home
 ---
 
-# Form Submit
-
-<form action="">
-<input type="text" name="test">
-</form>
+This assistant uses OpenAI to create a meal plan and purchase and deliver it to you.
