@@ -169,7 +169,8 @@ function process(event) {
 
     // Define what happens on successful data submission
     XHR.addEventListener("load", (event) => {
-        if (JSON.parse(event.target.response) == "OK") {
+        response_obj=JSON.parse(event.target.response);
+        if (response_obj.status == "OK") {
             document.querySelector("div.spanner").classList.remove("show");
             document.querySelector("div.overlay").classList.remove("show");
         } else {
