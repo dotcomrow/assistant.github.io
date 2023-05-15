@@ -12,17 +12,16 @@ permalink: /signup/
 <!-- 
 <form action="" method="POST" onsubmit="process(event)"> -->
 
-
 <form id="verify" onsubmit="process(event)">
     <p>Enter your phone number:</p>
     <input id="phone" type="tel" name="phone" />
     <input type="submit" class="btn" value="Verify" />
-</form>
 
-<label>
-<div class="alert alert-info" style="display: none"></div>
-<div class="alert alert-error" style="display: none"></div>
-</label>
+    <label>
+    <div class="alert alert-info" style="display: none"></div>
+    <div class="alert alert-error" style="display: none"></div>
+    </label>
+</form>
 
 <script>
     const phoneInputField = document.querySelector("#phone");
