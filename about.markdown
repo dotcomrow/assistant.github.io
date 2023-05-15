@@ -42,36 +42,12 @@ function process(event) {
  info.style.display = "none";
  error.style.display = "none";
 
- const data = new URLSearchParams();
- data.append("phone", phoneNumber);
-
-const client = context.getTwilioClient();
-const lookup = await client.lookups.v2.phoneNumbers(event.phone).fetch();
-
- if (lookup.valid) {
-      response.setStatusCode(200);
-      response.setBody({
-        success: true,
-      });
-      callback(null, response);
-    } else {
-      response.setStatusCode(400);
-      response.setBody({
-        success: false,
-        error: `Invalid phone number ${event.phone}: ${errorStr(
-          lookup.validationErrors
-        )}`,
-      });
-      callback(null, response);
-    }
-  } catch (error) {
-    console.error(error);
-    response.setStatusCode(error.status);
-    response.setBody({
-      success: false,
-      error: "Something went wrong.",
-    });
-    callback(null, response);
-  }
-};
+ if (phoneInput.isValidNumber()) {
+   info.style.display = "";
+   info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+ } else {
+   error.style.display = "";
+   error.innerHTML = `Invalid phone number.`;
+ }
+}
 </script>
