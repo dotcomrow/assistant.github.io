@@ -8,5 +8,5 @@ layout: home
 # Form Submit
 
 <form action="">
-
+<input type="text" name="test">
 </form>
