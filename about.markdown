@@ -10,7 +10,7 @@ permalink: /signup/
       href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
     />
 <!-- 
-<form action="https://plib7qyexhoeljo2j6oye4e6oa0eyldb.lambda-url.us-east-1.on.aws/" method="POST" onsubmit="process(event)"> -->
+<form action="" method="POST" onsubmit="process(event)"> -->
 
 
 <form id="verify" onsubmit="process(event)">
@@ -43,11 +43,60 @@ function process(event) {
  error.style.display = "none";
 
  if (phoneInput.isValidNumber()) {
-   info.style.display = "";
-   info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
- } else {
+    info.style.display = "";
+    info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+
+    console.log("Sending data");
+
+    const XHR = new XMLHttpRequest();
+
+    const urlEncodedDataPairs = [];
+
+    // Turn the data object into an array of URL-encoded key/value pairs.
+    for (const [name, value] of Object.entries(phoneInput)) {
+        urlEncodedDataPairs.push(
+            `${encodeURIComponent(name)}=${encodeURIComponent(value)}`
+        );
+    }
+
+    // Combine the pairs into a single string and replace all %-encoded spaces to
+    // the '+' character; matches the behavior of browser form submissions.
+    const urlEncodedData = urlEncodedDataPairs.join("&").replace(/%20/g, "+");
+
+    // Define what happens on successful data submission
+    XHR.addEventListener("load", (event) => {
+        alert("Yeah! Data sent and response loaded.");
+    });
+
+    // Define what happens in case of an error
+    XHR.addEventListener("error", (event) => {
+        alert("Oops! Something went wrong.");
+    });
+
+    // Set up our request
+    XHR.open("POST", "https://plib7qyexhoeljo2j6oye4e6oa0eyldb.lambda-url.us-east-1.on.aws/");
+
+    // Add the required HTTP header for form data POST requests
+    XHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    // Finally, send our data.
+    XHR.send(urlEncodedData);
+} else {
    error.style.display = "";
    error.innerHTML = `Invalid phone number.`;
- }
 }
+}
+
+
+
+
+const btn = document.querySelector("button");
+
+function sendData(data) {
+
+}
+
+btn.addEventListener("click", () => {
+  sendData({ test: "ok" });
+});
 </script>
