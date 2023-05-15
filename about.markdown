@@ -28,8 +28,8 @@ Last Name : <input type="text" name="lastName" id="lastName"/>
     <input type="submit" class="btn" value="Verify" />
 </form>
 <label>
-      <div class="alert alert-info" style="display: none"></div>
-      <div class="alert alert-error" style="display: none"></div>
+    <div class="alert alert-info" style="display: none"></div>
+    <div class="alert alert-error" style="display: none"></div>
 </label>
 
 <script>
@@ -51,4 +51,3 @@ Last Name : <input type="text" name="lastName" id="lastName"/>
       info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
     }
   </script>
-  
