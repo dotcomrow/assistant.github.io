@@ -169,9 +169,15 @@ function process(event) {
 
     // Define what happens on successful data submission
     XHR.addEventListener("load", (event) => {
-        console.log(event)
-        document.querySelector("div.spanner").classList.remove("show");
-        document.querySelector("div.overlay").classList.remove("show");
+        if (JSON.parse(event.target.response) == "OK") {
+            document.querySelector("div.spanner").classList.remove("show");
+            document.querySelector("div.overlay").classList.remove("show");
+        } else {
+            error.style.display = "";
+            error.innerHTML = `Invalid phone number.`;
+            document.querySelector("div.spanner").classList.remove("show");
+            document.querySelector("div.overlay").classList.remove("show");
+        }
     });
 
     // Define what happens in case of an error
