@@ -11,14 +11,6 @@ permalink: /signup/
 />
 
 <style>
-.wrapper{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  text-align:center;
-  transform: translateX(-50%);
-}
 
 .spanner{
   position:absolute;
@@ -179,11 +171,15 @@ function process(event) {
     // Define what happens on successful data submission
     XHR.addEventListener("load", (event) => {
         alert("Yeah! Data sent and response loaded.");
+        document.querySelector("div.spanner").classList.remove("show");
+        document.querySelector("div.overlay").classList.remove("show");
     });
 
     // Define what happens in case of an error
     XHR.addEventListener("error", (event) => {
         alert("Oops! Something went wrong.");
+        document.querySelector("div.spanner").classList.remove("show");
+        document.querySelector("div.overlay").classList.remove("show");
     });
 
     // Set up our request
