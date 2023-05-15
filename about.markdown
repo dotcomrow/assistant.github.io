@@ -47,9 +47,10 @@ function process(event) {
     info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
 
     console.log("Sending data");
+
     data = {
         "phoneNumber":phoneNumber
-    }
+    };
     const XHR = new XMLHttpRequest();
 
     const urlEncodedDataPairs = [];
