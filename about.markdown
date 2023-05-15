@@ -10,7 +10,7 @@ permalink: /signup/
       href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
 />
 
-<link rel="stylesheet" href="styles/loading-spinner.css/>
+<link rel="stylesheet" href="styles/loading-spinner.css"/>
 <div class="wrapper">
 <form id="verify" onsubmit="process(event)">
     <p>Enter your phone number:</p>
