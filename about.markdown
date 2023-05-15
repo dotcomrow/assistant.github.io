@@ -86,17 +86,4 @@ function process(event) {
    error.innerHTML = `Invalid phone number.`;
 }
 }
-
-
-
-
-const btn = document.querySelector("button");
-
-function sendData(data) {
-
-}
-
-btn.addEventListener("click", () => {
-  sendData({ test: "ok" });
-});
 </script>
