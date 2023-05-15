@@ -169,7 +169,7 @@ function process(event) {
 
     // Define what happens on successful data submission
     XHR.addEventListener("load", (event) => {
-        alert("Yeah! Data sent and response loaded.");
+        console.log(event)
         document.querySelector("div.spanner").classList.remove("show");
         document.querySelector("div.overlay").classList.remove("show");
     });
