@@ -4,7 +4,29 @@ title: Sign Up
 permalink: /signup/
 ---
 
-<form action="https://plib7qyexhoeljo2j6oye4e6oa0eyldb.lambda-url.us-east-1.on.aws/" method="POST">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+<script>
+    const phoneInputField = document.querySelector("#phoneNumber");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+      utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+
+    const info = document.querySelector(".alert-info");
+    const error = document.querySelector(".alert-error");
+
+    function process(event) {
+      event.preventDefault();
+
+      const phoneNumber = phoneInput.getNumber();
+
+      info.style.display = "";
+      info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+    }
+  </script>
+
+<form action="https://plib7qyexhoeljo2j6oye4e6oa0eyldb.lambda-url.us-east-1.on.aws/" method="POST" onsubmit="process(event)">
 
 <label>
 First Name : <input type="text" name="firstName" id="firstName"/>
@@ -15,6 +37,8 @@ Last Name : <input type="text" name="lastName" id="lastName"/>
 </label>
 
 <label>
+      <div class="alert alert-info" style="display: none"></div>
+      <div class="alert alert-error" style="display: none"></div>
 Phone Number : <input type="text" name="phoneNumber" id="phoneNumber"/>
 </label>
 
