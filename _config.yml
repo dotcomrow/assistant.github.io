@@ -29,8 +29,8 @@ github_username:  dotcomrow
 # Build settings
 theme: minima
 # remote_theme: y7kim/agency-jekyll-theme
-plugins:
-  - jekyll-auth
+# plugins:
+#   - jekyll-auth
 
 # Exclude from processing.
 # The following items will not be processed, by default.
