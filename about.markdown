@@ -171,8 +171,8 @@ function process(event) {
     // Define what happens on successful data submission
     XHR.addEventListener("load", (event) => {
         alert("Yeah! Data sent and response loaded.");
-        <!-- document.querySelector("div.spanner").classList.remove("show");
-        document.querySelector("div.overlay").classList.remove("show"); -->
+        //document.querySelector("div.spanner").classList.remove("show");
+        //document.querySelector("div.overlay").classList.remove("show");
     });
 
     // Define what happens in case of an error
