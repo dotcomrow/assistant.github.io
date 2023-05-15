@@ -20,7 +20,7 @@ permalink: /signup/
   width: 100%;
   display:block;
   text-align:center;
-  height: 300px;
+  height: 100%;
   color: #FFF;
   transform: translateY(-50%);
   z-index: 1000;
