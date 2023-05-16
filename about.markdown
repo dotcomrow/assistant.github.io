@@ -108,7 +108,7 @@ permalink: /signup/
 }
 </style>
 <div class="wrapper">
-<form id="verify" onsubmit="process(event)">
+<form id="verify" onsubmit="process(event)" class="form">
     <p>Enter your phone number:</p>
     <input id="phone" type="tel" name="phone" />
     <input type="submit" class="btn" value="Verify" />
@@ -170,7 +170,7 @@ function process(event) {
     XHR.addEventListener("load", (event) => {
         response_obj=JSON.parse(event.target.response);
         if (response_obj.status == "OK") {
-            document.querySelector("div.wrapper").innerHTML = `<p>Success! You will receive a text message shortly with further instructions.</p>`;
+            document.querySelector(".form").innerHTML = `<p>Success! You will receive a text message shortly with further instructions.</p>`;
             document.querySelector("div.spanner").classList.remove("show");
             document.querySelector("div.overlay").classList.remove("show");
         } else {
