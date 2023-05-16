@@ -170,6 +170,7 @@ function process(event) {
     XHR.addEventListener("load", (event) => {
         response_obj=JSON.parse(event.target.response);
         if (response_obj.status == "OK") {
+            document.querySelector("wrapper").innerHTML = `<p>Success! You will receive a text message shortly with further instructions.</p>`;
             document.querySelector("div.spanner").classList.remove("show");
             document.querySelector("div.overlay").classList.remove("show");
         } else {
