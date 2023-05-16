@@ -182,7 +182,9 @@ function process(event) {
 
     // Define what happens in case of an error
     XHR.addEventListener("error", (event) => {
-        alert("Oops! Something went wrong.");
+        response_obj=JSON.parse(event.target.response);
+        error.style.display = "";
+        error.innerHTML = response_obj.details;
         document.querySelector("div.spanner").classList.remove("show");
         document.querySelector("div.overlay").classList.remove("show");
     });
